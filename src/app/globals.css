@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* input formにフォーカス時に検索候補を選ぶ際に背景色が白くなるのを防ぐ */
+/* WebKitベースのブラウザ向け */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  border-bottom: 1px solid #fff;
+  -webkit-text-fill-color: #fff;
+  -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0);
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Firefox向け */
+input:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/* styles.css または任意のCSSファイル */
+.background {
+  background-image: url("../../public/images/background-image.jpg");
+  background-size: cover; /* 画像を要素のサイズに合わせる */
+  background-position: center; /* 画像を中央に配置 */
+  background-repeat: no-repeat; /* 画像を繰り返さない */
+}
+
+.glassBackgroundColor {
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.13);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* hover 時に直線を引く */
+.text-underline {
+  position: relative;
+  display: inline-block; /* これにより、::after 疑似要素の位置を制御できます */
+  cursor: pointer;
+  color: #64ffda; /* あなたのテキストの色に合わせて変更してください */
+}
+
+/* ホバーする前の線のスタイル */
+.text-underline::after {
+  content: ""; /* 疑似要素にはcontentプロパティが必須です */
+  position: absolute;
+  width: 0; /* 初期状態では線の幅を0に設定 */
+  height: 1px; /* 線の厚さ */
+  bottom: 0; /* 要素の下端に配置 */
+  left: 0; /* 要素の左端から開始 */
+  background-color: #64ffda; /* 線の色 */
+  transition: width 0.5s ease; /* アニメーションの速度とイージング */
+}
+
+/* ホバー時の線のスタイル */
+.text-underline:hover::after {
+  width: 100%; /* ホバー時は線の幅を要素の幅いっぱいに広げる */
+}
