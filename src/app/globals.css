@@ -20,6 +20,12 @@
     text-wrap: balance;
   }
 }
+body {
+  background-image: url("../../public/images/background-image.jpg");
+  background-size: cover; /* 画像を要素のサイズに合わせる */
+  background-position: center; /* 画像を中央に配置 */
+  background-repeat: no-repeat; /* 画像を繰り返さない */
+}
 
 /* input formにフォーカス時に検索候補を選ぶ際に背景色が白くなるのを防ぐ */
 /* WebKitベースのブラウザ向け */
