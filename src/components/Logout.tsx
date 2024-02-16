@@ -40,7 +40,8 @@ const Logout = () => {
 
   return (
     <div>
-      <div className="text-center mb-5">ログアウトしますか？</div>
+      <div className="text-center font-bold text-xl mb-10">ログアウト</div>
+      <div className="text-center mb-5 mt-10">ログアウトしますか？</div>
       {/* ログアウトボタン */}
       <form onSubmit={onSubmit}>
         <div className="mb-5">

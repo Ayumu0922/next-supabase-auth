@@ -25,6 +25,8 @@ body {
   background-size: cover; /* 画像を要素のサイズに合わせる */
   background-position: center; /* 画像を中央に配置 */
   background-repeat: no-repeat; /* 画像を繰り返さない */
+  height: 100vh; /* ビューポートの高さに合わせる */
+  width: 100vw; /* ビューポートの幅に合わせる */
 }
 
 /* input formにフォーカス時に検索候補を選ぶ際に背景色が白くなるのを防ぐ */

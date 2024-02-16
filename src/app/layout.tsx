@@ -19,11 +19,9 @@ export default function RootLayout({
   return (
     <html>
       <body className={inter.className}>
-        <div className="flex flex-col h-screen">
+        <div className="flex flex-col h-full">
           <SupabaseListener />
-          <main className="flex-1 container mx-auto px-1 py-5  justify-center flex overflow-hidden">
-            {children}
-          </main>
+          <main className="flex-1 flex justify-center ">{children}</main>
         </div>
       </body>
     </html>

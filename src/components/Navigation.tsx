@@ -29,9 +29,9 @@ const Navigation = ({
   }, [session, setUser, profile]);
 
   return (
-    <header className=" px-5 font-bold text-xl  shadow-navbarShadow text-textGreen bg-white/10">
+    <header className=" px-5 font-bold text-xl  shadow-navbarShadow  bg-white/10">
       <div className="py-5 container w-full mx-auto flex  justify-between items-center ">
-        <Link href="/" className="font-bold text-xl cursor-pointer">
+        <Link href="/" className="font-bold  text-2xl cursor-pointer">
           Next Supabase Auth
         </Link>
 
