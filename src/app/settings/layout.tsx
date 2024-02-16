@@ -38,7 +38,7 @@ const SettingsLayout = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
 
   return (
-    <div className="  rounded-md bg-white w-full grid grid-cols-3 gap-3 p-3">
+    <div className="  rounded-md bg-white w-full grid grid-cols-3 gap-3 p-3 max-w-containerSmall max-h-[600px]">
       <div className="col-span-1 text-sm space-y-1 font-bold flex flex-col">
         {subNavigation.map((item, index) => (
           <Link href={item.href} key={index}>
@@ -53,7 +53,7 @@ const SettingsLayout = ({ children }: { children: React.ReactNode }) => {
           </Link>
         ))}
       </div>
-      <div className="col-span-2">{children}</div>
+      <div className="col-span-2 ">{children}</div>
     </div>
   );
 };

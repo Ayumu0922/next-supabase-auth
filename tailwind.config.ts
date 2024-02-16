@@ -34,7 +34,7 @@ const config: Config = {
         navbarShadow: "0 10px 30px -10px rgba(2,12,27,0.7)",
       },
       colors: {
-        bodyColor: "#0a192f",
+        bodyColor: "#001314",
         textGreen: "#64ffda",
         textLight: "#dfe3f0",
         textDark: "#a7b0cb",

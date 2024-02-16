@@ -7,7 +7,7 @@ export default function AuthComponent() {
   const [switchAuth, setSwitchAuth] = useState(false);
   return (
     <div className=" h-screen flex justify-center items-center m-4">
-      <div className=" bg-white m-2 w-3/4 flex justify-center flex-col p-5  max-w-containersx rounded-xl shadow-xl">
+      <div className=" bg-white m-2 w-3/4 flex justify-center flex-col p-5  rounded-xl shadow-xl">
         <h1 className=" md:hidden text-center mt-10 mb-10 text-3xl font-bold">
           登録はこちらから
         </h1>
