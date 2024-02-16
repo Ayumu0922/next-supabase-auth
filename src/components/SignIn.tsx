@@ -61,7 +61,7 @@ export default function SignIn({ className, setSwitchAuth }: AuthSwitchProps) {
 
   return (
     <div className={className}>
-      <div className=" grid grid-cols-3 gap-2 items-center  mb-12">
+      <div className=" grid grid-cols-3 gap-2 items-center  mb-12 ">
         <div className=" w-full h-1 bg-gray-300"></div>
         <p className=" text-center text-lg font-bold md:hidden ">ログイン</p>
         <p className=" text-center text-base font-bold hidden md:block">
@@ -116,7 +116,7 @@ export default function SignIn({ className, setSwitchAuth }: AuthSwitchProps) {
       {/* パスワード忘れた */}
 
       {/* 新規作成誘導 */}
-      <p className=" text-center mb-10  font-semibold  text-base md:text-xl">
+      <p className=" text-center mb-10  font-semibold  text-base md:text-xl items-center justify-center flex flex-col md:flex-none">
         アカウントの作成はこちら
         <span
           className=" font-semibold  text-textGreen cursor-pointer ml-3 text-underline"

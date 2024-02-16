@@ -2,13 +2,35 @@
 
 import Link from "next/link";
 import type { Session } from "@supabase/auth-helpers-nextjs";
+import useStore from "../../store";
+import { useEffect } from "react";
+import { Database } from "../../lib/supabase";
 import Image from "next/image";
+type profileType = Database["public"]["Tables"]["profiles"]["Row"];
 
 // ナビゲーション
-const Navigation = ({ session }: { session: Session | null }) => {
+const Navigation = ({
+  session,
+  profile,
+}: {
+  session: Session | null;
+  profile: profileType | null;
+}) => {
+  // プロフィール情報を状態管理に格納する(session、setUser、profileのいずれかが変更されたときに副作用を実行)
+  const { setUser } = useStore();
+  useEffect(() => {
+    setUser({
+      id: session ? session.user.id : "",
+      email: session ? session.user.email! : "",
+      name: session && profile ? profile.name : "",
+      introduce: session && profile ? profile.introduce : "",
+      avatar_url: session && profile ? profile.avatar_url : "",
+    });
+  }, [session, setUser, profile]);
+
   return (
-    <header className=" font-bold text-white  border-b-2">
-      <div className="py-5 container max-w-screen-sm mx-auto flex items-center justify-between">
+    <header className=" px-5 font-bold   border-b-2 bg-white">
+      <div className="py-5 container max-w-screen-sm mx-auto flex  justify-between items-center ">
         <Link href="/" className="font-bold text-xl cursor-pointer">
           Next Supabase Auth
         </Link>
@@ -18,16 +40,28 @@ const Navigation = ({ session }: { session: Session | null }) => {
           {session ? (
             <div className="flex items-center space-x-5">
               <Link href="/settings/profile">
-                <div className="relative w-10 h-10">profile</div>
+                <div className="relative w-10 h-10">
+                  <Image
+                    src={
+                      profile && profile.avatar_url
+                        ? profile.avatar_url
+                        : "/images/default.png"
+                    }
+                    className=" rounded-full object-cover"
+                    alt="avatar"
+                    fill
+                  />
+                </div>
               </Link>
             </div>
           ) : (
             <div className="flex items-center space-x-5">
               <Link href="/auth/login">
-                <button className="relative inline-flex items-center justify-center p-0.5  overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
-                  <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                    ログイン
-                  </span>
+                <button
+                  type="submit"
+                  className=" font-bold w-full bg-green-500 p-4 rounded-md text-white hover:scale-95 hover:bg-green-400  transition-all"
+                >
+                  ログイン
                 </button>
               </Link>
             </div>

@@ -113,7 +113,7 @@ export default function SignUp({ className, setSwitchAuth }: AuthSwitchProps) {
         <label>メールアドレス</label>
         <input
           type="email"
-          placeholder="メールアドレスを入力してください"
+          placeholder="メールアドレス"
           className="  py-3 px-2  border-b   bg-transparent  outline-none focus:outline-none"
           id="signup-email"
           {...register("email", { required: true })}
@@ -147,7 +147,7 @@ export default function SignUp({ className, setSwitchAuth }: AuthSwitchProps) {
       {message && (
         <div className=" my-5 text-center text-sm text-red-500">{message}</div>
       )}
-      <p className="  text-sm text-center mb-10 font-semibold  md:text-xl">
+      <p className="  text-sm text-center mb-10 font-semibold  md:text-xl items-center justify-center flex flex-col md:flex-none">
         アカウントをお持ちの方はこちら
         <span
           className=" font-semibold  text-textGreen cursor-pointer ml-3 text-underline"
