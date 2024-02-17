@@ -1,5 +1,4 @@
 "use client";
-
 import { FormEvent, useState } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
@@ -40,9 +39,9 @@ const Logout = () => {
 
   return (
     <div>
-      <div className="text-center mb-5">ログアウトしますか？</div>
+      <div className="text-center mb-5 text-xl">ログアウトしますか？</div>
       {/* ログアウトボタン */}
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className=" text-sm">
         <div className="mb-5">
           {loading ? (
             <Loading />

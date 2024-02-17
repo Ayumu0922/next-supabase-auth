@@ -145,9 +145,9 @@ const Profile = () => {
     }
   };
   return (
-    <div>
+    <>
       <div className="text-center font-bold text-xl mb-10">プロフィール</div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className=" text-sm">
         {/* アバター画像 */}
         <div className="mb-5">
           <div className="flex flex-col text-sm items-center justify-center mb-5">
@@ -167,16 +167,18 @@ const Profile = () => {
         </div>
 
         {/* 名前 */}
-        <div className="mb-5">
+        <div className="mb-5 ">
           <div className="text-sm mb-1 font-bold">名前</div>
-          <input
-            type="text"
-            className="border rounded-md w-full py-2 px-3 focus:outline-none focus:border-sky-500"
-            placeholder="名前"
-            id="name"
-            {...register("name", { required: true })}
-            required
-          />
+          <div>
+            <input
+              type="text"
+              className=" border rounded-md  py-2 px-3 focus:outline-none focus:border-sky-500"
+              placeholder="名前"
+              id="name"
+              {...register("name", { required: true })}
+              required
+            />
+          </div>
           <div className="my-3 text-center text-sm text-red-500">
             {errors.name?.message}
           </div>
@@ -213,7 +215,7 @@ const Profile = () => {
       {message && (
         <div className="my-5 text-center text-red-500 mb-5">{message}</div>
       )}
-    </div>
+    </>
   );
 };
 

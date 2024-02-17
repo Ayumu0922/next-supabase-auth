@@ -29,9 +29,12 @@ const Navigation = ({
   }, [session, setUser, profile]);
 
   return (
-    <header className=" px-5 font-bold   border-b-2 bg-white">
+    <header className="px-5 font-bold shadow-navbarShadow bg-bodyColor bg-opacity-80 backdrop-blur-lg w-screen">
       <div className="py-5 container max-w-screen-sm mx-auto flex  justify-between items-center ">
-        <Link href="/" className="font-bold text-xl cursor-pointer">
+        <Link
+          href="/"
+          className="font-bold text-2xl cursor-pointer  text-textGreen"
+        >
           Next Supabase Auth
         </Link>
 
@@ -59,7 +62,7 @@ const Navigation = ({
               <Link href="/auth/login">
                 <button
                   type="submit"
-                  className=" font-bold w-full bg-green-500 p-4 rounded-md text-white hover:scale-95 hover:bg-green-400  transition-all"
+                  className="  px-4 py-3 rounded-md text-textGreen text-[13px] border border-textGreen  hover:bg-hoverColor duration-300"
                 >
                   ログイン
                 </button>

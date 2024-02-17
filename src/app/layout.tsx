@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 // 常に認証状態を管理するのに必要
 import SupabaseListener from "@/components/SupabaseListener";
+import "./background-movie.css";
+import "./main.js";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,18 +19,49 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html>
-      <body className={inter.className}>
-        <div className="flex flex-col min-h-screen">
-          <SupabaseListener />
-          <main className="flex-1 container max-w-screen-sm mx-auto px-1 py-5">
-            {children}
-          </main>
-          <footer className="py-5">
-            <div className="text-center text-sm">Copyright ©Ayumu Kubota</div>
-          </footer>
+    <html className={inter.className}>
+      {/* position absolute */}
+      <div className="main-container  flex flex-col">
+        {/* navigation bar */}
+        <SupabaseListener />
+        {/* main contents */}
+        <div className="flex-1 overflow-auto">{children}</div>
+        {/* footer */}
+        <footer className="py-5">
+          <div className="text-center text-sm">Copyright ©Ayumu Kubota</div>
+        </footer>
+      </div>
+
+      {/* position relative */}
+      <div className="gradient-bg">
+        <svg xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="goo">
+              <feGaussianBlur
+                in="SourceGraphic"
+                stdDeviation="10"
+                result="blur"
+              />
+              <feColorMatrix
+                in="blur"
+                mode="matrix"
+                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
+                result="goo"
+              />
+              <feBlend in="SourceGraphic" in2="goo" />
+            </filter>
+          </defs>
+        </svg>
+        <div className="gradients-container">
+          <div className="g1"></div>
+          <div className="g2"></div>
+          <div className="g3"></div>
+          <div className="g4"></div>
+          <div className="g5"></div>
+          <div className="interactive"></div>
         </div>
-      </body>
+      </div>
+      <script type="module" src="/main.js" defer></script>
     </html>
   );
 }

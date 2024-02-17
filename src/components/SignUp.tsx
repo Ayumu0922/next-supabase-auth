@@ -3,7 +3,6 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Link from "next/link";
 import * as z from "zod";
 import type { Database } from "../../lib/supabase";
 type Schema = z.infer<typeof schema>;
@@ -71,9 +70,7 @@ export default function SignUp({ className, setSwitchAuth }: AuthSwitchProps) {
 
       // 入力フォームクリア
       reset();
-      setMessage(
-        "本登録用のURLを記載したメールを送信しました。メールをご確認の上、メール本文中のURLをクリックして、本登録を行ってください。"
-      );
+      setMessage("本登録用のURLを記載したメールを送信しました。");
     } catch (error) {
       setMessage("エラーが発生しました。" + error);
       return;
@@ -94,7 +91,7 @@ export default function SignUp({ className, setSwitchAuth }: AuthSwitchProps) {
       </div>
       <form
         action=""
-        className="flex flex-col gap-5 mb-9 font-semibold"
+        className="flex flex-col gap-5 mb-2 font-semibold"
         onSubmit={handleSubmit(onSubmit)}
       >
         {/* 名前 */}
@@ -106,7 +103,7 @@ export default function SignUp({ className, setSwitchAuth }: AuthSwitchProps) {
           id="name"
           {...register("name", { required: true })}
         />
-        <div className=" my-3 text-center text-sm text-red-500">
+        <div className=" my-2 text-center text-sm text-red-500">
           {errors.name?.message}
         </div>
         {/* メールアドレス */}
@@ -118,7 +115,7 @@ export default function SignUp({ className, setSwitchAuth }: AuthSwitchProps) {
           id="signup-email"
           {...register("email", { required: true })}
         />
-        <div className=" my-3 text-center text-sm text-red-500">
+        <div className=" my-2 text-center text-sm text-red-500">
           {errors.email?.message}
         </div>
         {/* パスワード */}
@@ -130,14 +127,14 @@ export default function SignUp({ className, setSwitchAuth }: AuthSwitchProps) {
           id="signup-password"
           {...register("password", { required: true })}
         />
-        <div className=" my-3 text-center text-sm text-red-500">
+        <div className=" my-2 text-center text-sm text-red-500">
           {errors.password?.message}
         </div>
         {loading ? (
           <Loading />
         ) : (
           <button
-            className=" font-bold w-full bg-green-500 py-5 rounded-md text-white mb-8 hover:scale-95 hover:bg-green-400 transition-all"
+            className=" font-bold w-full bg-green-500 py-5 rounded-md text-white hover:scale-95 hover:bg-green-400 transition-all"
             type="submit"
           >
             新規登録
@@ -145,9 +142,11 @@ export default function SignUp({ className, setSwitchAuth }: AuthSwitchProps) {
         )}
       </form>
       {message && (
-        <div className=" my-5 text-center text-sm text-red-500">{message}</div>
+        <div className=" my-3 text-center text-sm text-red-500 font-bold  mb-3">
+          {message}
+        </div>
       )}
-      <p className="  text-sm text-center mb-10 font-semibold  md:text-xl items-center justify-center flex flex-col md:flex-none">
+      <p className=" gap-2  text-sm text-center mb-10 font-semibold  md:text-xl items-center justify-center flex flex-col md:flex-none">
         アカウントをお持ちの方はこちら
         <span
           className=" font-semibold  text-textGreen cursor-pointer ml-3 text-underline"

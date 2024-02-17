@@ -10,9 +10,12 @@ export default async function Home() {
   const {
     data: { session },
   } = await supabase.auth.getSession();
+
   return (
-    <div className=" text-center text-xl">
-      {session ? <div>ログイン済み</div> : <div>未ログイン</div>}
+    <div className=" w-screen  h-full ">
+      <div className=" text-sm text-center">
+        {session ? <div>ログイン済み</div> : <div>未ログイン</div>}
+      </div>
     </div>
   );
 }

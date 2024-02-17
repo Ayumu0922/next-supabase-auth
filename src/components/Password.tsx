@@ -75,7 +75,7 @@ const Password = () => {
     <div>
       <div className="text-center font-bold text-xl mb-10">パスワード変更</div>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className=" text-sm">
         {/* 新しいパスワード */}
         <div className="mb-5">
           <div className="text-sm mb-1 font-bold">新しいパスワード</div>

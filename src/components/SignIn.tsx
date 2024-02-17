@@ -2,7 +2,6 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Link from "next/link";
 import Loading from "@/app/loading";
 import * as z from "zod";
 import type { Database } from "../../lib/supabase";
@@ -83,7 +82,7 @@ export default function SignIn({ className, setSwitchAuth }: AuthSwitchProps) {
           id="signin-email"
           {...register("email", { required: true })}
         />
-        <div className=" my-3 text-center text-sm text-red-500">
+        <div className=" my-2 text-center text-sm text-red-500">
           {errors.email?.message}
         </div>
         {/* パスワード */}
@@ -95,7 +94,7 @@ export default function SignIn({ className, setSwitchAuth }: AuthSwitchProps) {
           id="signin-password"
           {...register("password", { required: true })}
         />
-        <div className=" my-3 text-center text-sm text-red-500">
+        <div className=" my-2 text-center text-sm text-red-500">
           {errors.password?.message}
         </div>
         {/* ログインボタン */}
@@ -116,7 +115,7 @@ export default function SignIn({ className, setSwitchAuth }: AuthSwitchProps) {
       {/* パスワード忘れた */}
 
       {/* 新規作成誘導 */}
-      <p className=" text-center mb-10  font-semibold  text-base md:text-xl items-center justify-center flex flex-col md:flex-none">
+      <p className=" gap-2 text-center mb-10  font-semibold  text-base md:text-xl items-center justify-center flex flex-col md:flex-none">
         アカウントの作成はこちら
         <span
           className=" font-semibold  text-textGreen cursor-pointer ml-3 text-underline"
