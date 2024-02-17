@@ -62,7 +62,7 @@ const Navigation = ({
               <Link href="/auth/login">
                 <button
                   type="submit"
-                  className="  px-4 py-3 rounded-md text-textGreen text-[13px] border border-textGreen  hover:bg-hoverColor duration-300"
+                  className=" font-bold w-full bg-green-500 p-4 rounded-md text-white hover:scale-95 hover:bg-green-400  transition-all"
                 >
                   ログイン
                 </button>
