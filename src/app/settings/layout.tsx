@@ -1,13 +1,13 @@
 "use client";
-
+import { ReactNode } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   UserCircleIcon,
   EnvelopeIcon,
   KeyIcon,
   ArrowLeftEndOnRectangleIcon,
 } from "@heroicons/react/24/outline";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
 
 // ナビゲーション
 const subNavigation = [
@@ -33,45 +33,33 @@ const subNavigation = [
   },
 ];
 
-const SettingsLayout = ({ children }: { children: React.ReactNode }) => {
+interface SettingsLayoutProps {
+  children: ReactNode;
+}
+
+const SettingsLayout = ({ children }: SettingsLayoutProps) => {
   // 現在のパスの取得
   const pathname = usePathname();
 
   return (
-    <div className=" w-[600px] h-[500px] overflow-hidden">
-      <div className=" rounded-md glassBackgroundColor grid grid-cols-3 gap-3 p-3 max-w-containersx pt-5 mt-14">
+    <div className="w-[600px] h-[500px] overflow-hidden">
+      <div className="rounded-md glassBackgroundColor grid grid-cols-3 gap-3 p-3 max-w-containersx pt-5 mt-14">
         <div className="col-span-1 text-sm space-y-1 font-bold flex flex-col">
           {subNavigation.map((item, index) => (
-            <Link href={item.href} key={index}>
-              <div
+            <Link href={item.href} key={index} legacyBehavior>
+              <a
                 className={`${
-                  item.href == pathname && " text-textGreen"
+                  item.href === pathname ? "text-textGreen" : ""
                 } hover:text-textGreen`}
               >
                 <item.icon className="inline-block w-5 h-5 mr-2" />
                 {item.name}
-              </div>
+              </a>
             </Link>
           ))}
         </div>
         <div className="col-span-2">{children}</div>
       </div>
-    <div className=" rounded-xl bg-white w-full grid grid-cols-3 gap-3 p-3 max-w-containerSmall max-h-[600px] mt-10">
-      <div className="col-span-1 text-sm space-y-1 font-bold flex flex-col">
-        {subNavigation.map((item, index) => (
-          <Link href={item.href} key={index}>
-            <div
-              className={`${
-                item.href == pathname ? "bg-sky-100" : ""
-              } hover:bg-sky-100 px-3 py-2 rounded-full transition-all duration-300 ease-in-out transform  hover:shadow-lg`}
-            >
-              <item.icon className="inline-block w-5 h-5 mr-2" />
-              {item.name}
-            </div>
-          </Link>
-        ))}
-      </div>
-      <div className="col-span-2 ">{children}</div>
     </div>
   );
 };
